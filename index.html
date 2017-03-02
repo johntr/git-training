@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Intro to Git</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h3>How do you manage the code base of a software project?</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="0">Local file system</li>
+							<li class="fragment" data-fragment-index="1">Central Server (VCS)</li>
+							<li class="fragment blue" data-fragment-index="2" style="color: #1b91ff;">Distributed (DVCS)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Here comes Git!</h2>
+						<p>Next generation VCS, it's distributed so rather than one place for the full version history of a codebase, each developer's working copy contains the full project history.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>What is git?</h2>
+						<p class="fragment fade-out" data-fragment-index="0">British slang for "pig headed, think they are always correct, argumentative"</p>
+						<p class="fragment fade-up" data-fragment-index="1">Developed by Junio Hamano and Linus Torvalds in 2005.</p>
+						<p class="fragment fade-up" data-fragment-index="2">Built specifically to manage the Linux kernel.</p>
+						<p class="fragment fade-up" data-fragment-index="3">Git has been designed with performance, security and flexibility in mind.</p>
+					</section>
+					<section>
+						<h2>Perfomance</h2>
+						<p class="fragment" data-fragment-index="0">Changes made to local file system, no network connection needed.</p>
+						<p class="fragment" data-fragment-index="1">Uses a combination of delta encoding (storing content differences), compression and explicitly stores directory contents and version metadata objects.</p>
+					</section>
+					<section>
+						<h2>Security</h2>
+						<p>Git repository are secured with a secure hashing algorithm, SHA1.</p>
+					</section>
+					<section>
+						<h2>Flexability</h2>
+						<p class="fragment" data-fragment-index="0">Supports multiple development workflows.</p>
+						<p class="fragment" data-fragment-index="1">Works well with project large and small.</p>
+						<p class="fragment" data-fragment-index="2">Not for just code. Can be used for any text files.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>How to git</h2>
+						<p><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Install git</a></p>
+					</section>
+					<section>
+						<h3>What is a git repo?</h3>
+						<p>A git repo is broken down into three "trees".</p>
+						<ul>
+						<li class="fragment" data-fragment-index="0">Working directory: Your local file system.</li>
+						<li class="fragment" data-fragment-index="1">Index: A virtual directory which stages files that are ready for commit.</li>
+						<li class="fragment" data-fragment-index="2">History: Record of every commit made to the project.</li>
+						</ul>
+						<p class="fragment" data-fragment-index="3">Head: Pointer to your last commit. (Top of the tree)</p>
+					</section>
+					<section>
+						<img src="/images/basic-usage.svg" style="background: #ffffff; border-color: #929191;" />
+					</section>
+					<section>
+						<h3>Creating your repo</h3>
+						<pre class="fragment" data-fragment-index="0"><code>$ git init</code></pre></p>
+						<pre class="fragment" data-fragment-index="1"><code>$ git clone http://path/to/remote.git .</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Starting with the basics</h3>
+						<pre class="fragment" data-fragment-index="0"><code>$ git add [file/folder]</code></pre>
+						<pre class="fragment" data-fragment-index="1"><code>$ git commit -m "Inital commit"</code></pre>
+					</section>
+					<section>
+						<h3>Sharing your changes</h3>
+						<pre><code>git push orign master</code></pre>
+						<p class="fragment" data-fragment-index="0">What is origin?</p>
+						<p class="fragment" data-fragment-index="1">Alias of server info.</p>
+					</section>
+					<section>
+						<h3>Getting contributed changes.</h3>
+						<pre><code>$ git pull</code></pre>
+					</section>
+					<section>
+						<h3>Tagging</h3>
+						<p>Tagging allows you to mark releases or milestones in your project.</p>
+						<pre><code>$ git tag [version] [commit id]</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Branching and Merging</h3>
+						<p class="fragment" data-fragment-index="0">Branching allows you to work on features and code changes independently from you core base.</p>
+						<p class="fragment" data-fragment-index="1">The default main branch is called <strong style="color: #1b91ff;">master</strong>.</p>
+						<p class="fragment" data-fragment-index="2">Changes you want to keep can then be merged into master.</p>
+					</section>
+					<section>
+						<h3>Branching</h3>
+						<pre><code>$ git checkout -b newFeature</code></pre>
+						<img src="/images/01.svg" style="background: #ffffff; border-color: #929191;"  />
+					</section>
+					<section>
+						<h3>Merging</h3>
+						<pre><code>$ git merge newFeature</code></pre>
+						<img src="/images/merge.png" style="background: #ffffff; border-color: #929191;"  />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>How do I go back?</h2>
+						<p class="fragment" data-fragment-index="0">If you have local changes that you want to completely revert.</p>
+						<pre class="fragment" data-fragment-index="1"><code>$ git checkout [filename]</code></pre>
+						<p class="fragment" data-fragment-index="2">If you have staged changes that you want to reset.</p>
+						<pre class="fragment" data-fragment-index="3"><code>$ git reset [filename]</code></pre>
+					</section>
+					<section>
+						<h2>How do we roll back?</h2>
+						<p>Checkout all files from a old commit.</p>
+						<pre class="fragment" data-fragment-index="0"><code>$ git checkout [commit] [filename]</code></pre>
+						<p>Checkout a previous version of a file.</p>
+						<pre class="fragment" data-fragment-index="1"><code>$ git checkout [commit] [filename]</code></pre>
+					</section>
+					<section>
+						<h3>My repo is totally housed!</h3>
+						<pre><code>$ rm -rf .git</code></pre>
+						<pre><code>$ git init</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Git Logs</h3>
+						<p>A git repo contains the history of all the changes to a project.</p>
+						<pre><code>$ git log</code></pre>
+						<pre><code>$ git log --graph --oneline --decorate --all</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Git Flow</h3>
+						<p> A strict branching model designed around the project release. It provides a robust framework for managing larger projects.</p>
+					</section>
+					<section>
+						<img src="images/git-model@2x.png" style="height: 600px;"/>
+					</section>
+				</section>
+				<section>
+					<h3>Just scratching the surface!</h3>
+					<p>This is just a start in the world of git. There are a lot of concepts, workflows and commands for git.</p>
+					<p>
+						<a href="https://git-scm.com/">Git Homepage</a><br>
+						<a href="https://www.atlassian.com/git/tutorials">Bit Bucket Tutorials</a><br>
+						<a href="http://marklodato.github.io/visual-git-guide/index-en.html">A Visual Git Reference</a><br>
+						<a href="https://www.codeschool.com/learn/git">Code School Interactive</a>
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
